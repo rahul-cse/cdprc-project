@@ -1,0 +1,49 @@
+<div class="app-body">
+    <div class="card-body">
+        <div class="row container">
+            <div class="box col-md-12">
+                <form class="box-body" (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf=flag>
+                    <div class="row mt-1">
+                        <label  class="control-label col-md-3 text-right">Employee Name</label>
+                        <label  class="form-control col-md-6"  >{{claimRequest.employeeName}}</label>
+                    </div>
+                    <div class="row mt-1">
+                        <label class="control-label col-md-3 text-right">Employee ID</label>
+                        <label class="form-control col-md-6" >{{claimRequest.employeeId}}</label>
+
+                    </div>
+                    <div class="row mt-1 ml-5">
+                        <table class="table table-responsive-sm table-bordered">
+                            <tr class="thead">
+                                <th>SL#</th>
+                                <th>Course Name</th>
+                                <th>Course Website</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr *ngFor="let onlineCourse of claimRequest?.onlineCourses;let i=index;">
+                                <td>{{i+1}}</td>
+                                <td><label class="form-control col-md-10" >{{onlineCourse.courseName}}</label></td>
+                                <td><label class="form-control col-md-10" >{{onlineCourse.courseSite}}</label></td>
+                                <td><label  class="form-control col-md-6" >{{onlineCourse.amount}}</label></td>
+
+                            </tr>
+                            <tr style="text-align: right;">
+                                <td colspan="4"><label style="margin-right: 12%;"><b>Total: </b>{{totalAmount}}</label></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    <div class="footer text-center col-md-9 mt-2">
+                        <button type="button" class="btn btn-success" style="width:18%;margin-right: 2px;" (click)="approve()" >Approve</button>
+                        <button type="button" class="btn btn-danger" style="width:18%" >Cancel</button>
+                    </div>
+
+        
+        
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>

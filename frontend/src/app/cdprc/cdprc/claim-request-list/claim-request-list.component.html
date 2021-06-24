@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-body">
+        <table class="table table-responsive-sm table-bordered">
+            <tr class="thead">
+                <th rowspan="2">SL#</th>
+                <th rowspan="2">Employee Name</th>
+                <th rowspan="2">Employee ID</th>
+                <th colspan="3">Courses</th>               
+                <th rowspan="2">Action</th>
+            </tr>
+            <tr>
+                <th>Course Name</th>
+                <th>Website</th>
+                <th>Amount</th>
+            </tr>
+            <tbody>
+              
+                    <tr *ngFor="let claimRequest of claimRequestList;let i=index;">
+                        <td >{{i+1}}</td>
+                        <td >{{claimRequest.employeeName}}</td>
+                        <td >{{claimRequest.employeeId}}</td>
+                        <td >
+                            <tr *ngFor="let onlineCourse of claimRequest?.onlineCourses">
+                                <td>{{onlineCourse.courseName}}</td>                                                               
+                            </tr>
+                        </td>
+                        <td>
+                            <tr *ngFor="let onlineCourse of claimRequest?.onlineCourses">
+                                <td>{{onlineCourse.courseSite}}</td>
+                            </tr>
+                        </td>
+                        <td >
+                            <tr *ngFor="let onlineCourse of claimRequest?.onlineCourses">
+                                <td>{{onlineCourse.amount}}</td>
+                            </tr>
+                        </td>
+                        <td >
+                            <button class="btn btn-secondary" (click)="viewApproval(claimRequest.id)">View</button>
+                            <span *ngIf="claimRequest.isApproved" class="badge badge-success">Approved</span>
+                            <span *ngIf="!claimRequest.isApproved" class="badge badge-warning">Pending</span>
+                        </td>
+                    </tr>
+                  
+              
+            
+               
+            </tbody>
+           
+            
+        </table>
+    </div>
+</div>

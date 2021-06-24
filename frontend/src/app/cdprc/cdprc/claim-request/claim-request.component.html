@@ -1,0 +1,51 @@
+<div class="app-body">
+    <div class="card-body">
+        <div class="row container">
+            <div class="box col-md-12">
+                <form class="box-body" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    <div class="row mt-1">
+                        <label for="name" class="control-label col-md-3 text-right">Employee Name<span class="text-danger">*</span></label>
+                        <input type="text" name="employeeName" class="form-control col-md-6" [(ngModel)]=claimRequest.employeeName required placeholder="Employee Name">
+                    </div>
+                    <input type="hidden" name="id" >
+                    <div class="row mt-1">
+                        <label for="employeeId" class="control-label col-md-3 text-right">Employee ID<span class="text-danger">*</span></label>
+                        <input type="text" name="employeeId" class="form-control col-md-6" [(ngModel)]=claimRequest.employeeId required placeholder="Employee Id">
+
+                    </div>
+                    <div class="row mt-1 ml-5">
+                        <table class="table table-responsive-sm table-bordered">
+                            <tr class="thead">
+                                <th>SL#</th>
+                                <th>Course Name</th>
+                                <th>Course Website</th>
+                                <th>Amount</th>
+                                <th><button type="button" class="btn btn-success" (click)="addCourse()">+ Add Course</button></th>
+                            </tr>
+                            <tr *ngFor="let onlineCourse of claimRequest?.onlineCourses;let i=index;">
+                                <td>{{i+1}}</td>
+                                <td><input name="courseName-{{i}}" class="form-control col-md-10" [(ngModel)]=onlineCourse.courseName required placeholder="Course Name"></td>
+                                <td><input name="courseSite-{{i}}" class="form-control col-md-10" [(ngModel)]=onlineCourse.courseSite required placeholder="Course Website"></td>
+                                <td><input type="number" name="amount-{{i}}" class="form-control col-md-6" [(ngModel)]=onlineCourse.amount required placeholder="Amount(Taka)"></td>
+                                <td><button type="button" class="btn btn-danger" (click)="deleteCourse(i)"><i class="c-icon c-icon-2xl mt-5 mb-2 cil-x"></i></button></td>
+
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    <div class="footer text-center col-md-9 mt-2">
+                        <button type="submit" class="btn btn-primary" style="width:18%;margin-right: 2px;" [disabled]="!f.valid">Save</button>
+                        <button type="reset" class="btn btn-danger" style="width:18%" >Cancel</button>
+                    </div>
+
+        
+                    <div class="alert alert-success mt-2" role="alert" *ngIf="successFlag">
+                        Your requisition is submitted.
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
