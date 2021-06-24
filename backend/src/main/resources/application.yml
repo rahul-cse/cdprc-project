@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: cdprc-backend-apis
+  datasource:
+    url: "jdbc:mysql://localhost:3306/cpdrc?createDatabaseIfNotExist=true"
+    username: "root"
+    password: ""
+  jpa:
+    properties:
+      hibernate:
+        dialect:org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8081
+
