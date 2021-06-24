@@ -39,7 +39,7 @@ export class ClaimRequestComponent implements OnInit {
   onSubmit(form:NgForm){
     console.log(this.claimRequest)
     const newClaimRequest:ClaimRequest = (form.value);
-    this.claimRequestService.createClaimRequest(this.claimRequest).subscribe(data=>{if(data=='CREATED') {this.claimRequest=new ClaimRequest(),
+    this.claimRequestService.createClaimRequest(this.claimRequest).subscribe(data=>{if(data=='CREATED') {this.claimRequest=new ClaimRequest(),this.onlineCourses=[],this.claimRequest.onlineCourses=this.onlineCourses;
       this.toastr.success("Your requisition is submitted.")
     }});
   }
